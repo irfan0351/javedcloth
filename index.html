@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javeed Designer & Textile</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
 </head>
 <body style="background-color: rgba(99, 171, 226, 0.486);">
     <div class="container">
@@ -56,7 +59,6 @@
                     <label><input type="checkbox" name="material" value="cotton"> Suite</label>
                     <label><input type="checkbox" name="material" value="wool"> Kurtha</label>
                     <label><input type="checkbox" name="material" value="Dress"> Dress</label>
-
                 </fieldset>
 
                 <fieldset>
@@ -69,12 +71,20 @@
 
             <!-- Budget Range -->
             <div id="budgetRange" class="tabcontent">
-                <label for="budgetRange">Budget Range:</label>
-                <select id="budgetRange" name="budgetRange">
-                    <option value="0-500">₹0 - ₹500</option>
-                    <option value="500-1000">₹500 - ₹1000</option>
-                    <option value="1000+">₹1000+</option>
-                </select>
+                <label for="rate">Rate per Meter (₹):</label>
+                <input type="number" id="rate" name="rate" onchange="calculateTotal()" required>
+
+                <label for="meter">Meter:</label>
+                <input type="number" id="meter" name="meter" onchange="calculateTotal()" required>
+
+                <label for="total">Total (₹):</label>
+                <input type="number" id="total" name="total" readonly>
+
+                <label for="advance">Advance (₹):</label>
+                <input type="number" id="advance" name="advance" onchange="calculateBalance()" required>
+
+                <label for="balance">Balance (₹):</label>
+                <input type="number" id="balance" name="balance" readonly>
             </div>
 
             <button type="submit">Submit</button>
@@ -92,10 +102,30 @@
             <p id="styleOutput"></p>
             <p id="materialOutput"></p>
             <p id="colorOutput"></p>
-            <p id="budgetRangeOutput"></p>
+            <p id="rateOutput"></p>
+            <p id="meterOutput"></p>
+            <p id="totalOutput"></p>
+            <p id="advanceOutput"></p>
+            <p id="balanceOutput"></p>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Function to calculate total based on rate and meter
+        function calculateTotal() {
+            var rate = document.getElementById('rate').value;
+            var meter = document.getElementById('meter').value;
+            var total = rate * meter;
+            document.getElementById('total').value = total;
+        }
+
+        // Function to calculate balance based on total and advance
+        function calculateBalance() {
+            var total = document.getElementById('total').value;
+            var advance = document.getElementById('advance').value;
+            var balance = total - advance;
+            document.getElementById('balance').value = balance;
+        }
+    </script>
 </body>
 </html>
