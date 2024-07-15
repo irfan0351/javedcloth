@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javeed Designer & Textile</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Javeed Designer & Textile</h1>
+
+        <!-- Tabs -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'personalInfo')">Personal Information</button>
+            <button class="tablinks" onclick="openTab(event, 'designPreferences')">Design Preferences</button>
+            <button class="tablinks" onclick="openTab(event, 'budgetRange')">Budget Range</button>
+        </div>
+
+        <!-- Tab content -->
+        <form id="designerForm" enctype="multipart/form-data">
+            <!-- Personal Information -->
+            <div id="personalInfo" class="tabcontent">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="measurements">Measurements:</label>
+                <textarea id="measurements" name="measurements" rows="4" required></textarea>
+
+                <label for="deliveryDate">Delivery Date:</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" required>
+
+                <label for="samplePhoto">Sample Photo:</label>
+                <input type="file" id="samplePhoto" name="samplePhoto" accept="image/*" required>
+                <div id="imagePreview"></div>
+
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+
+            <!-- Design Preferences -->
+            <div id="designPreferences" class="tabcontent">
+                <fieldset>
+                    <legend>Design Preferences</legend>
+                    <label><input type="checkbox" name="style" value="casual"> Casual</label>
+                    <label><input type="checkbox" name="style" value="formal"> Formal</label>
+                    <label><input type="checkbox" name="style" value="party"> Party Wear</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Material Preferences</legend>
+                    <label><input type="checkbox" name="material" value="silk"> Silk</label>
+                    <label><input type="checkbox" name="material" value="cotton"> Cotton</label>
+                    <label><input type="checkbox" name="material" value="wool"> Wool</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Color Preferences</legend>
+                    <label><input type="checkbox" name="color" value="red"> Red</label>
+                    <label><input type="checkbox" name="color" value="blue"> Blue</label>
+                    <label><input type="checkbox" name="color" value="green"> Green</label>
+                </fieldset>
+            </div>
+
+            <!-- Budget Range -->
+            <div id="budgetRange" class="tabcontent">
+                <label for="budgetRange">Budget Range:</label>
+                <select id="budgetRange" name="budgetRange">
+                    <option value="0-500">₹0 - ₹500</option>
+                    <option value="500-1000">₹500 - ₹1000</option>
+                    <option value="1000+">₹1000+</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Submitted Data -->
+        <div id="submittedData" style="display: none;">
+            <h2>Submitted Data</h2>
+            <p id="nameOutput"></p>
+            <p id="phoneOutput"></p>
+            <p id="measurementsOutput"></p>
+            <p id="deliveryDateOutput"></p>
+            <img id="samplePhotoOutput" src="" alt="Sample Photo">
+            <p id="commentsOutput"></p>
+            <p id="styleOutput"></p>
+            <p id="materialOutput"></p>
+            <p id="colorOutput"></p>
+            <p id="budgetRangeOutput"></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
